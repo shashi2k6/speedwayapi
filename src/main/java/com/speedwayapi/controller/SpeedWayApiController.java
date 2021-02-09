@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class SpeedWayApiController {
 
-    @RequestMapping("/")
+    @RequestMapping("/home")
     public String home(){
         return "Success";
     }
