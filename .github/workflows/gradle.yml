@@ -27,11 +27,12 @@ jobs:
 
       - name: BUILD ALL THE DOCKER
         run: docker build . --file Dockerfile --tag speedwayapi:prod
-      - name: heroku login
-        run: heroku login
+
       - name: heroku container login
         run: heroku container:login
+
       - name: heroku container push
         run: heroku container:push web
+
       - name: herok container release
         run: heroku container:release web
