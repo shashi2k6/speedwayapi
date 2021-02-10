@@ -8,6 +8,6 @@ public class SpeedWayApiController {
 
     @RequestMapping("/home")
     public String home(){
-        return "Success responses";
+        return "Success message";
     }
 }
