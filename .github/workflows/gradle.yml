@@ -25,6 +25,4 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew build
 
-      - name: BUILD ALL THE DOCKER
-        run: docker build . --file Dockerfile --tag speedwayapi:prod
 
