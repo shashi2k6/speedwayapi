@@ -24,6 +24,8 @@ jobs:
         run: chmod +x gradlew
       - name: Build with Gradle
         run: ./gradlew build
+      - name: grant permission
+        run: chmod +x heroku.yml
       - name: Run heroku
         run: ./heroku.yml
 
