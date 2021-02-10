@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("//api/v1/racecars")
+@RequestMapping("/api/v1/racecars")
 public class SpeedWayApiController {
 
     @PostMapping
