@@ -24,6 +24,7 @@ jobs:
         run: chmod +x gradlew
       - name: Build with Gradle
         run: ./gradlew build
-      - name: grant permission
 
+      - name: BUILD ALL THE DOCKER
+        run: docker build . --file Dockerfile --tag speedwayapi:prod
 
