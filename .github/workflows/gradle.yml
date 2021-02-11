@@ -27,7 +27,7 @@ jobs:
       - name: docker build
         run: docker build . --file Dockerfile --tag speedwayapi:github.sha
       - name: heroku deploy
-        uses: shashi2k6/speedwayapi
+        uses: shashi2k6/speedwayapi@vmaster
         with:
           heroku_api_key: 6d1f0352-9b08-4e67-adc1-52b65bd0ee6c  # Defined in the repository Settings > Secrets
           heroku_email: shashi2k6@gmail.com
