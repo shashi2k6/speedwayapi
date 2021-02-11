@@ -1,18 +1,23 @@
 package com.speedwayapi.controller;
 
+import com.speedwayapi.model.RaceCar;
+import com.speedwayapi.service.RaceCarService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/v1/racecars")
+
+@RequestMapping("/api/v1")
+
 public class SpeedWayApiController {
 
-    @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public void addCar(){
+    @Autowired
+    private RaceCarService raceCarService;
 
+    @PostMapping("/racecars")
+    @ResponseStatus(HttpStatus.CREATED)
+    public RaceCar addCar(@RequestBody RaceCar raceCar) {
+        return raceCarService.addRaceCar(raceCar);
     }
 }
