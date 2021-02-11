@@ -7,7 +7,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+
 @RequestMapping("/api/v1")
+
 public class SpeedWayApiController {
 
     @Autowired
