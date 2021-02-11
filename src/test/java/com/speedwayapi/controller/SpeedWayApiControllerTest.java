@@ -23,6 +23,10 @@ public class SpeedWayApiControllerTest {
     @Autowired
     private ObjectMapper objectMapper;
 
+    /**
+     *
+     * @throws Exception
+     */
     @Test
     public void test_addCar() throws Exception {
         RaceCar raceCar = new RaceCar(1);
