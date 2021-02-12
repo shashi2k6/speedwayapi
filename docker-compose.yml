@@ -1,0 +1,6 @@
+services:
+  postgresdb:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: notsecure
+      POSTGRES_DB: sandwich_db
