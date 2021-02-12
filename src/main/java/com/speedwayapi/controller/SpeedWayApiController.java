@@ -1,5 +1,6 @@
 package com.speedwayapi.controller;
 
+import com.speedwayapi.model.Driver;
 import com.speedwayapi.model.RaceCar;
 import com.speedwayapi.service.RaceCarService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,4 +29,19 @@ public class SpeedWayApiController {
     public List<RaceCar> getAllCars() {
         return raceCarService.getAllCars();
     }
+
+
+    @GetMapping("/driver")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Driver> getAllDrivers() {
+        return raceCarService.getAllDrivers();
+    }
+
+
+    @PostMapping("/driver")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Driver addDriver(@RequestBody Driver driver) {
+        return raceCarService.addDriver(driver);
+    }
+
 }
