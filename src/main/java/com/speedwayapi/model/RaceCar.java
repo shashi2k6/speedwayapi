@@ -5,7 +5,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-@Table(name = "racecar",schema="public")
+@Table(name = "racecar")
 public class RaceCar implements Serializable {
 
     @Id
@@ -18,8 +18,8 @@ public class RaceCar implements Serializable {
     private String status;
     private int top_speed;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "driver_id", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "driver_id")
     private Driver driver;
 
     public Driver getDriver() {

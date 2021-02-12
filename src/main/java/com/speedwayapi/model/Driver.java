@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table(name = "driver",schema = "public")
+@Table(name = "driver")
 public class Driver implements Serializable {
 
     @Id
@@ -19,7 +19,7 @@ public class Driver implements Serializable {
     private int wins;
     private int losses;
 
-    @OneToMany(mappedBy = "driver", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "driver", cascade = CascadeType.ALL)
     private List<RaceCar> cars;
 
     public Driver() {
