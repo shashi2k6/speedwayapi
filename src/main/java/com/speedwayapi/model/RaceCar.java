@@ -1,13 +1,12 @@
 package com.speedwayapi.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Objects;
 
 @Entity
-@Table(name = "racecar")
-public class RaceCar {
+@Table(name = "racecar",schema="public")
+public class RaceCar implements Serializable {
 
     @Id
     @GeneratedValue
@@ -18,6 +17,18 @@ public class RaceCar {
     private int owner;
     private String status;
     private int top_speed;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "driver_id", nullable = false)
+    private Driver driver;
+
+    public Driver getDriver() {
+        return driver;
+    }
+
+    public void setDriver(Driver driver) {
+        this.driver = driver;
+    }
 
     public RaceCar() {
     }
@@ -85,5 +96,31 @@ public class RaceCar {
 
     public void setTop_speed(int top_speed) {
         this.top_speed = top_speed;
+    }
+
+    @Override
+    public String toString() {
+        return "RaceCar{" +
+                "id=" + id +
+                ", nickname='" + nickname + '\'' +
+                ", model='" + model + '\'' +
+                ", year='" + year + '\'' +
+                ", owner=" + owner +
+                ", status='" + status + '\'' +
+                ", top_speed=" + top_speed +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        RaceCar raceCar = (RaceCar) o;
+        return id == raceCar.id && owner == raceCar.owner && top_speed == raceCar.top_speed && Objects.equals(nickname, raceCar.nickname) && Objects.equals(model, raceCar.model) && Objects.equals(year, raceCar.year) && Objects.equals(status, raceCar.status);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, nickname, model, year, owner, status, top_speed);
     }
 }

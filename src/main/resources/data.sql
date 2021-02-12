@@ -1,1 +1,0 @@
-insert into racecar(id,nickname,model,year,owner,status,top_speed) values(999999,'The Condor','Corvette','2019',27,'AVAILABLE',189);

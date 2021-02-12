@@ -1,10 +1,13 @@
 package com.speedwayapi.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
-public class Driver {
+@Table(name = "driver",schema = "public")
+public class Driver implements Serializable {
 
     @Id
     @GeneratedValue
@@ -13,12 +16,11 @@ public class Driver {
     private String last_name;
     private int age;
     private String nickname;
-
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<RaceCar> cars;
-
     private int wins;
     private int losses;
+
+    @OneToMany(mappedBy = "driver", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<RaceCar> cars;
 
     public Driver() {
     }
@@ -97,4 +99,30 @@ public class Driver {
         this.losses = losses;
     }
 
+    @Override
+    public String toString() {
+        return "Driver{" +
+                "id=" + id +
+                ", first_name='" + first_name + '\'' +
+                ", last_name='" + last_name + '\'' +
+                ", age=" + age +
+                ", nickname='" + nickname + '\'' +
+                ", wins=" + wins +
+                ", losses=" + losses +
+                ", cars=" + cars +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Driver driver = (Driver) o;
+        return id == driver.id && age == driver.age && wins == driver.wins && losses == driver.losses && Objects.equals(first_name, driver.first_name) && Objects.equals(last_name, driver.last_name) && Objects.equals(nickname, driver.nickname) && Objects.equals(cars, driver.cars);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, first_name, last_name, age, nickname, wins, losses, cars);
+    }
 }
