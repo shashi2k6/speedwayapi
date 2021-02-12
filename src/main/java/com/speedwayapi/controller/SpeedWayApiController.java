@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 
 @RequestMapping("/api/v1")
@@ -19,5 +21,11 @@ public class SpeedWayApiController {
     @ResponseStatus(HttpStatus.CREATED)
     public RaceCar addCar(@RequestBody RaceCar raceCar) {
         return raceCarService.addRaceCar(raceCar);
+    }
+
+    @GetMapping("/racecars")
+    @ResponseStatus(HttpStatus.OK)
+    public List<RaceCar> getAllCars() {
+        return raceCarService.getAllCars();
     }
 }

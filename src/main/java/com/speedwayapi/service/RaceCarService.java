@@ -5,6 +5,8 @@ import com.speedwayapi.repository.RaceCarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class RaceCarService {
 
@@ -13,5 +15,9 @@ public class RaceCarService {
 
     public RaceCar addRaceCar(RaceCar raceCar) {
         return raceCarRepository.save(raceCar);
+    }
+
+    public List<RaceCar> getAllCars() {
+        return raceCarRepository.findAll();
     }
 }

@@ -10,6 +10,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -24,7 +25,7 @@ public class SpeedWayApiControllerTest {
     private ObjectMapper objectMapper;
 
     /**
-     *
+     * Add car to the repository.
      * @throws Exception
      */
     @Test
@@ -36,5 +37,17 @@ public class SpeedWayApiControllerTest {
                 .andExpect(status().isCreated())
                 .andExpect(jsonPath("$").isNotEmpty())
                 .andExpect(jsonPath("$.nickname").value("The Condor"));
+    }
+
+    /**
+     * Get the cars from the repository.
+     * @throws Exception
+     */
+    @Test
+    public void test_getAllCars() throws Exception {
+        mockMvc.perform(get("/api/v1/racecars"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$").isNotEmpty())
+                .andExpect(jsonPath("$.[0].nickname").value("The Condor"));
     }
 }
