@@ -29,11 +29,12 @@ public class SpeedWayApiControllerTest {
      */
     @Test
     public void test_addCar() throws Exception {
-        RaceCar raceCar = new RaceCar(1);
+        RaceCar raceCar = new RaceCar("The Condor","Corvette","2019",27,"AVAILABLE",189);
         mockMvc.perform(post("/api/v1/racecars")
                 .content(objectMapper.writeValueAsString(raceCar))
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isCreated())
-                .andExpect(jsonPath("$").isNotEmpty());
+                .andExpect(jsonPath("$").isNotEmpty())
+                .andExpect(jsonPath("$.nickname").value("The Condor"));
     }
 }
