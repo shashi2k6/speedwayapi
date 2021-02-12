@@ -20,6 +20,9 @@ public class Driver {
     private int wins;
     private int losses;
 
+    public Driver() {
+    }
+
     public Driver(String first_name, String last_name, int age, String nickname, List<RaceCar> cars, int wins, int losses) {
         this.first_name = first_name;
         this.last_name = last_name;

@@ -62,7 +62,7 @@ public class SpeedWayApiControllerTest {
     public void test_getAllDrivers() throws Exception {
         mockMvc.perform(get("/api/v1/driver"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$").isEmpty());
+                .andExpect(jsonPath("$").isNotEmpty());
     }
 
     /**
