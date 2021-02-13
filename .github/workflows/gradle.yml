@@ -1,36 +1,35 @@
 # This workflow will build a Java project with Gradle
 # For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-gradle
+#name: Java CI with Gradle
 
-name: Java CI with Gradle
+#on:
+#  push:
+#    branches: [ master ]
+#  pull_request:
+#    branches: [ master ]
 
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+#jobs:
+#  build:
 
-jobs:
-  build:
+#    runs-on: ubuntu-latest
 
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
-      - name: Set up JDK 1.8
-        uses: actions/setup-java@v1
-        with:
-          java-version: 1.8
-      - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
-      - name: Build with Gradle
-        run: ./gradlew build
-      - name: docker build
-        run: docker build . --file Dockerfile --tag speedwayapi:github.sha
-      - name: heroku deploy
-        uses: akhileshns/heroku-deploy@v3.8.9
-        with:
-          heroku_api_key: 6d1f0352-9b08-4e67-adc1-52b65bd0ee6c  # Defined in the repository Settings > Secrets
-          heroku_email: shashi2k6@gmail.com
-          heroku_app_name: "speedwayapi" #Must be unique in Heroku
-          usedocker: true
+#    steps:
+#      - uses: actions/checkout@v2
+#      - name: Set up JDK 1.8
+#       uses: actions/setup-java@v1
+#       with:
+#         java-version: 1.8
+#     - name: Grant execute permission for gradlew
+#       run: chmod +x gradlew
+#     - name: Build with Gradle
+#       run: ./gradlew build
+#     - name: docker build
+#       run: docker build . --file Dockerfile --tag speedwayapi:github.sha
+#     - name: heroku deploy
+#       uses: akhileshns/heroku-deploy@v3.8.9
+#       with:
+#         heroku_api_key: 6d1f0352-9b08-4e67-adc1-52b65bd0ee6c  # Defined in the repository Settings > Secrets
+#         heroku_email: shashi2k6@gmail.com
+#         heroku_app_name: "speedwayapi" #Must be unique in Heroku
+#         usedocker: true
 
