@@ -6,5 +6,3 @@ Browse the racecars to get details about them.
 Browse the drivers to get details about their records and cars.
 Browse races to get details about the stats, participants and outcomes.
 
-Use case 1 :
-Use case 2: 
